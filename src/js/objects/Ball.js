@@ -1,6 +1,6 @@
 class Ball {
     
-    constructor(coords) {
+    constructor(coords, sonido) {
         // Coordenadas
         this.x = coords.x;
         this.y = coords.y;
@@ -11,6 +11,10 @@ class Ball {
 
         // Imagen
         this.img = loadImage("src/assets/images/ball.png");
+
+        // Sonido
+        this.sonido = loadSound('/src/assets/sounds/kick.wav');
+        this.sonido.setVolume(0.05);
 
         // Velocidad
         // this.speedX = 8;
@@ -29,6 +33,7 @@ class Ball {
         }
         if(this.y < 0 || this.y >= board.height - this.height) {
             this.speedY *= -1;
+            kick.play();// kick.setVolume(0.15);
         }
 
         
@@ -47,6 +52,7 @@ class Ball {
                 this.height + this.y > player.y
             ) {
                 this.speedX *= -1;
+                this.sonido.play();
             }
         });
     }
