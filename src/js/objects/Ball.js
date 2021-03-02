@@ -27,16 +27,16 @@ class Ball {
         this.players = players;
 
         // Hitbox
-        
+        /*
         this.hb = new HitboxSquare(
             HitBoxFactory.coords(this.x + 9, this.y + 9),
             HitBoxFactory.squareDims(29, 29)
         );
-        /*
-        this.hb = new EllipseHitBoxFactory(
-            EllipseHitBoxFactory.coords(this.x + 9, this.y + 9),
+        */
+        this.hb = new HitboxEllipse(
+            EllipseHitBoxFactory.coords(this.x + 18, this.y + 18),
             EllipseHitBoxFactory.ellipseDims(29, 29)
-        );*/
+        );
     }
 
     move() {
@@ -51,7 +51,7 @@ class Ball {
         }*/
 
         if ( this.x < 0 ||  this.x >= board.width - this.width ||
-            this.players.some((p) => p.hb.wasHitSquare(this.hb)) ) 
+            this.players.some((p) => p.hb.wasHitEllipse(this.hb)) ) 
         {
             this.speedX *= -1;
             //kick.play();// kick.setVolume(0.15);
