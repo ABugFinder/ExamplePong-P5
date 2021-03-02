@@ -23,6 +23,17 @@ class Player {
             HitBoxFactory.coords(this.x + 9, this.y + 9),
             HitBoxFactory.squareDims(this.width-18, this.height-18),
         );
+
+        //Puntos
+
+        let pointsHbCoords;
+        
+        // if(player == 1)
+
+        this.pointHb = new HitboxSquare(
+            HitBoxFactory.coords(),
+            HitBoxFactory.squareDims(5, board.height),
+        );
     }
 
     moveUp() {

@@ -6,6 +6,8 @@ let musicloop;
 let sasageo;
 let blackClover;
 let kick;
+let pts;
+let gameFont;
 
 function setup() {
   // put setup code here
@@ -35,6 +37,8 @@ function setup() {
       PlayerFactory.controllSettings(38,40),
     )
   );
+  pts = new Points(PointsFactory.coords);
+
   ball.players = players;
   createCanvas(board.width, board.height);
 }
@@ -44,9 +48,11 @@ function draw() {
   background(bg);
   ball.draw();
   players.forEach(player => player.draw());
+  pts.draw();
 }
 
 function preload(){
+  //gameFont = loadFont("/src/assets/fonts/");
   soundFormats('mp3', 'wav');
   musicloop = loadSound('/src/assets/sounds/musicloop.wav');
   sasageo = loadSound('/src/assets/sounds/Chachageo.mp3');

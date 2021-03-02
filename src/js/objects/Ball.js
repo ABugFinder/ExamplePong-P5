@@ -34,8 +34,8 @@ class Ball {
         );
         */
         this.hb = new HitboxEllipse(
-            EllipseHitBoxFactory.coords(this.x + 18, this.y + 18),
-            EllipseHitBoxFactory.ellipseDims(29, 29)
+            EllipseHitBoxFactory.coords(this.x + 25, this.y + 25),
+            EllipseHitBoxFactory.ellipseDims(25, 25)
         );
     }
 
@@ -51,7 +51,7 @@ class Ball {
         }*/
 
         if ( this.x < 0 ||  this.x >= board.width - this.width ||
-            this.players.some((p) => p.hb.wasHitEllipse(this.hb)) ) 
+            this.players.some( (p) => p.hb.wasHitSquare(this.hb)) ) 
         {
             this.speedX *= -1;
             //kick.play();// kick.setVolume(0.15);
@@ -83,8 +83,8 @@ class Ball {
 */
     draw() {
         image(this.img, this.x, this.y, this.width, this.height);
-        this.move();
         this.hb.draw();
+        this.move();
         //this.collision();
     }
 
