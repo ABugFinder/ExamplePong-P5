@@ -1,6 +1,6 @@
 class Ball {
     
-    constructor(coords, sonido) {
+    constructor(coords, sonido, players = []) {
         // Coordenadas
         this.x = coords.x;
         this.y = coords.y;
@@ -13,6 +13,7 @@ class Ball {
         this.img = loadImage("src/assets/images/ball.png");
 
         // Sonido
+        this.sonido = sonido;
         this.sonido = loadSound('/src/assets/sounds/kick.wav');
         this.sonido.setVolume(0.05);
 
@@ -23,10 +24,23 @@ class Ball {
         this.speedX = Math.floor(Math.random()*10 - 5);
         this.speedY = Math.floor(Math.random()*10 - 5);
 
-        this.players = [];
+        this.players = players;
+
+        // Hitbox
+        
+        this.hb = new HitboxSquare(
+            HitBoxFactory.coords(this.x + 9, this.y + 9),
+            HitBoxFactory.squareDims(29, 29)
+        );
+        /*
+        this.hb = new EllipseHitBoxFactory(
+            EllipseHitBoxFactory.coords(this.x + 9, this.y + 9),
+            EllipseHitBoxFactory.ellipseDims(29, 29)
+        );*/
     }
 
     move() {
+        /*
         // Wall collision
         if((this.x < 0 || this.x >= board.width - this.width)) {
             this.speedX *= -1;
@@ -34,14 +48,24 @@ class Ball {
         if(this.y < 0 || this.y >= board.height - this.height) {
             this.speedY *= -1;
             kick.play();// kick.setVolume(0.15);
-        }
+        }*/
 
-        
-        //let d = dist(a1.x, a1.y, b2.x, b2.y);
+        if ( this.x < 0 ||  this.x >= board.width - this.width ||
+            this.players.some((p) => p.hb.wasHitSquare(this.hb)) ) 
+        {
+            this.speedX *= -1;
+            //kick.play();// kick.setVolume(0.15);
+        }
+        if (this.y < 0 || this.y >= board.height - this.height) {
+            this.speedY *= -1;
+            //kick.play();// kick.setVolume(0.15);
+        }
         this.x += this.speedX;
         this.y += this.speedY;
+        this.hb.x += this.speedX;
+        this.hb.y += this.speedY;
     }
-
+/*
     collision() {
         // Player collision
         this.players.forEach((player) => {
@@ -56,11 +80,12 @@ class Ball {
             }
         });
     }
-
+*/
     draw() {
         image(this.img, this.x, this.y, this.width, this.height);
         this.move();
-        this.collision();
+        this.hb.draw();
+        //this.collision();
     }
 
 }

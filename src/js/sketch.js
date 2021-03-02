@@ -12,10 +12,14 @@ function setup() {
   bg = loadImage("/src/assets/images/board.png");
   
   //musicloop.loop(); musicloop.setVolume(0.5);
-  //sasageo.loop(); sasageo.setVolume(0.15);
+  //sasageo.loop(); sasageo.setVolume(0.05);
   //blackClover.loop(); blackClover.setVolume(0.30);
   
-  ball = new Ball(BallFactory.coords(board.width/2, board.height/2));
+  ball = new Ball(BallFactory.coords(
+    board.width/2,
+    board.height/2),
+    players
+  );
 
   players.push(
     new Player(

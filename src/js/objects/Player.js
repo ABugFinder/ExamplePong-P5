@@ -17,19 +17,34 @@ class Player {
 
         // Controles
         this.controllSettings = controllSettings;
+
+        // Hitbox
+        this.hb = new HitboxSquare(
+            HitBoxFactory.coords(this.x + 9, this.y + 9),
+            HitBoxFactory.squareDims(this.width-18, this.height-18),
+        );
     }
 
     moveUp() {
-        if(this.y > 15) {
+ /*       if(this.y > 15) {
             this.y -= this.speed;
         }
-        
+ */       
+        if (this.hb.y >= 0) {
+            this.y -= this.speed;
+            this.hb.y -= this.speed;
+        }
     }
 
     moveDown() {
-        if(this.y < board.height - player.height - 15) {
+/*        if(this.y < board.height - player.height - 15) {
             this.y += this.speed;
         }
+*/
+        if (this.hb.y < board.height - this.hb.height) {
+            this.y += this.speed;
+            this.hb.y += this.speed;
+          }
     }
 
     move() {
@@ -43,6 +58,7 @@ class Player {
 
     draw() {
         image(this.img, this.x, this.y, this.width, this.height);
+        this.hb.draw();
         this.move();
     }
 
