@@ -13,7 +13,7 @@ class Player {
         this.img = loadImage("src/assets/images/paddle.png");
 
         // Velocidad
-        this.speed = 8;
+        this.speed = 10;
 
         // Controles
         this.controllSettings = controllSettings;
@@ -28,11 +28,15 @@ class Player {
 
         let pointsHbCoords;
         
-        // if(player == 1)
+        if(player === playersID.player1) {
+            pointsHbCoords = HitBoxFactory.coords(-20, 0);
+        } else {
+            pointsHbCoords = HitBoxFactory.coords(board.width + 10, 0);
+        }
 
         this.pointHb = new HitboxSquare(
             HitBoxFactory.coords(),
-            HitBoxFactory.squareDims(5, board.height),
+            HitBoxFactory.squareDims(10, board.height),
         );
     }
 

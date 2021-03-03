@@ -8,8 +8,8 @@ const player = {
     height: 175,
     speed: 8,
 };
-/*
-const ball = {
-    width: 50,
-    height: 50,
-};*/
+
+const playersID = {
+    player1: "p1",
+    player2: "p2",
+};

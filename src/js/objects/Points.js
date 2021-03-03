@@ -14,9 +14,11 @@ class Points {
 
     draw() {
         fill(255,255,255);
-        textSize(42);
+        textSize(64);
+        textAlign(CENTER);
+        textFont(this.font);
         //text("0 -- 0", 10, 100);
-        text(`${this.p1} -- ${this.p2}`, board.width/2 - 40, 70);
+        text(`${this.p1} - ${this.p2}`, this.x, this.y);
     }
 
     playerPointPlusPlus(playerId){

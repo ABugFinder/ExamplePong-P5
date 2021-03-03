@@ -13,6 +13,8 @@ function setup() {
   // put setup code here
   bg = loadImage("/src/assets/images/board.png");
   
+  // Música de fondo 
+
   //musicloop.loop(); musicloop.setVolume(0.5);
   //sasageo.loop(); sasageo.setVolume(0.05);
   //blackClover.loop(); blackClover.setVolume(0.30);
@@ -37,7 +39,7 @@ function setup() {
       PlayerFactory.controllSettings(38,40),
     )
   );
-  pts = new Points(PointsFactory.coords);
+  pts = new Points(PointsFactory.coords(board.width/2, 70), gameFont);
 
   ball.players = players;
   createCanvas(board.width, board.height);
@@ -52,7 +54,7 @@ function draw() {
 }
 
 function preload(){
-  //gameFont = loadFont("/src/assets/fonts/");
+  gameFont = loadFont("/src/assets/fonts/kenvector_future_thin2.ttf");
   soundFormats('mp3', 'wav');
   musicloop = loadSound('/src/assets/sounds/musicloop.wav');
   sasageo = loadSound('/src/assets/sounds/Chachageo.mp3');

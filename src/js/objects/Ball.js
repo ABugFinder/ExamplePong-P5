@@ -21,8 +21,8 @@ class Ball {
         // this.speedX = 8;
         // this.speedY = 8;
 
-        this.speedX = Math.floor(Math.random()*10 - 5);
-        this.speedY = Math.floor(Math.random()*10 - 5);
+        this.speedX = Math.floor(Math.random()* (+12 - +7) + +7);
+        this.speedY = Math.floor(Math.random()* (+12 - +7) + +7);
 
         this.players = players;
 
@@ -40,18 +40,8 @@ class Ball {
     }
 
     move() {
-        /*
-        // Wall collision
-        if((this.x < 0 || this.x >= board.width - this.width)) {
-            this.speedX *= -1;
-        }
-        if(this.y < 0 || this.y >= board.height - this.height) {
-            this.speedY *= -1;
-            kick.play();// kick.setVolume(0.15);
-        }*/
-
         if ( this.x < 0 ||  this.x >= board.width - this.width ||
-            this.players.some( (p) => p.hb.wasHitSquare(this.hb)) ) 
+            this.players.some( (player) => player.hb.wasHitSquare(this.hb)) ) 
         {
             this.speedX *= -1;
             //kick.play();// kick.setVolume(0.15);
