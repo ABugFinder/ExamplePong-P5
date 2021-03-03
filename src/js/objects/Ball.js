@@ -40,9 +40,15 @@ class Ball {
     }
 
     move() {
-        if ( this.x < 0 ||  this.x >= board.width - this.width ||
-            this.players.some( (player) => player.hb.wasHitSquare(this.hb)) ) 
-        {
+        //Registrando punto
+        this.players.forEach((player) =>{
+            if(player.hb.wasHitSquare(this.hb)){
+                pts.playerPointPlusPlus(player.playerID);
+            }
+        });
+
+        //Rebote
+        if (this.players.some( (player) => player.hb.wasHitSquare(this.hb)) ) {
             this.speedX *= -1;
             //kick.play();// kick.setVolume(0.15);
         }

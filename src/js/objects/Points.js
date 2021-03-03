@@ -21,8 +21,8 @@ class Points {
         text(`${this.p1} - ${this.p2}`, this.x, this.y);
     }
 
-    playerPointPlusPlus(playerId){
-        this[playerId]++;
+    playerPointPlusPlus(playerID){
+        this[playerID]++;
     }
 
 }

@@ -24,27 +24,22 @@ class Player {
             HitBoxFactory.squareDims(this.width-18, this.height-18),
         );
 
-        //Puntos
-
+        //Puntos HB
+        this.playersID = playersID; 
         let pointsHbCoords;
-        
         if(player === playersID.player1) {
-            pointsHbCoords = HitBoxFactory.coords(-20, 0);
-        } else {
             pointsHbCoords = HitBoxFactory.coords(board.width + 10, 0);
+        } else {
+            pointsHbCoords = HitBoxFactory.coords(-20, 0);
         }
 
         this.pointHb = new HitboxSquare(
-            HitBoxFactory.coords(),
+            pointsHbCoords,
             HitBoxFactory.squareDims(10, board.height),
         );
     }
 
     moveUp() {
- /*       if(this.y > 15) {
-            this.y -= this.speed;
-        }
- */       
         if (this.hb.y >= 0) {
             this.y -= this.speed;
             this.hb.y -= this.speed;
@@ -52,10 +47,6 @@ class Player {
     }
 
     moveDown() {
-/*        if(this.y < board.height - player.height - 15) {
-            this.y += this.speed;
-        }
-*/
         if (this.hb.y < board.height - this.hb.height) {
             this.y += this.speed;
             this.hb.y += this.speed;
@@ -82,10 +73,7 @@ class Player {
 const PlayerFactory = {
     // JSON
     coords: (x, y) => {
-        return {
-            x,
-            y,
-        };
+        return { x, y, };
     },
     controllSettings: (moveUpKey, moveDownKey) => {
         return [

@@ -18,18 +18,13 @@ function setup() {
   //musicloop.loop(); musicloop.setVolume(0.5);
   //sasageo.loop(); sasageo.setVolume(0.05);
   //blackClover.loop(); blackClover.setVolume(0.30);
-  
-  ball = new Ball(BallFactory.coords(
-    board.width/2,
-    board.height/2),
-    players
-  );
 
   players.push(
     new Player(
       PlayerFactory.coords(
         space, board.height/2 - player.height/2),
-      PlayerFactory.controllSettings(87,83)
+      PlayerFactory.controllSettings(87,83),
+      playersID.player1,
     ),
     new Player(
       PlayerFactory.coords(
@@ -37,9 +32,17 @@ function setup() {
         board.height/2 - player.height/2
       ),
       PlayerFactory.controllSettings(38,40),
+      playersID.player2,
     )
   );
+  
   pts = new Points(PointsFactory.coords(board.width/2, 70), gameFont);
+  ball = new Ball(BallFactory.coords(
+    board.width/2,
+    board.height/2),
+    players,
+    pts
+  );
 
   ball.players = players;
   createCanvas(board.width, board.height);
