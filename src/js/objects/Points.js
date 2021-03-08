@@ -1,5 +1,5 @@
-class Points {
-    constructor(coords, font){
+class Points{
+    constructor (coords, font){
         //Coordenadas
         this.x = coords.x;
         this.y = coords.y;
@@ -12,7 +12,7 @@ class Points {
         this.p2 = 0;
     }
 
-    draw() {
+    draw(){
         fill(255,255,255);
         textSize(64);
         textAlign(CENTER);
@@ -21,14 +21,15 @@ class Points {
         text(`${this.p1} - ${this.p2}`, this.x, this.y);
     }
 
-    playerPointPlusPlus(playerID){
-        this[playerID]++;
+    playerPointPlusPlus(playerId){
+        this[playerId]++;
     }
-
 }
 
 const PointsFactory = {
-    coords: (x,y) => ({
-        x, y,
+    coords: (x, y) => ({
+        x,
+        y,
     }),
+    
 };

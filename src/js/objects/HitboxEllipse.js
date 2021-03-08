@@ -5,7 +5,7 @@ class HitboxEllipse {
         this.width = dims.width;
         this.height = dims.height;
     }
-    // hbse = hitboxellipse
+    // hbe = hitboxellipse
     wasHitEllipse(hbe) {
       return (
         hbe.x < this.x + this.width &&
